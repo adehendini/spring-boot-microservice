@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  ecommerce_db:
+    image: postgres:10-alpine
+    container_name: ecommerce_db
+    restart: always
+    volumes:
+      - ecommerce_db_vol:/var/lib/postgresql/data
+    ports:
+      - 5431:5432
+    environment:
+      - POSTGRES_USER=adehendini
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=ecommerce
+    networks:
+      - hendi_network
+
+volumes:
+  ecommerce_db_vol:
+    name: ecommerce_db_vol
+
+networks:
+  hendi_network:
+    name: hendi_network
