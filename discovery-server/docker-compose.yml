@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  discovery-server:
+    build: .
+    image: discovery-server:latest
+    container_name: discovery-server
+    restart: always
+    ports:
+      - 8761:80
+    networks:
+      - hendi_network
+
+networks:
+  hendi_network:
+    name: hendi_network
