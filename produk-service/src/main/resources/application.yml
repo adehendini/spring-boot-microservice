@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: produk-service
+  datasource:
+    url: jdbc:postgresql://localhost:5431/ecommerce
+    username: adehendini
+    password: password
+    hikari:
+      maximum-pool-size: 3
+      minimum-idle: 3
+      connection-timeout: 300
+      idle-timeout: 300
+  jpa:
+    show-sql: false
+    hibernate.ddl-auto: update
+  jackson.property-naming-strategy: SNAKE_CASE
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+    enabled: false
+
+server:
+  port: 8080
+
+s3:
+  url: http://localhost:9000
+  accessKey: minio
+  secretKey: minio#123
+
+springdoc:
+  swagger-ui:
+    doc-expansion: none
