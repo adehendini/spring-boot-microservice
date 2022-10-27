@@ -1,0 +1,29 @@
+version: '3.7'
+
+services:
+
+  foto-produk-service:
+    build: .
+    image: foto-produk-service:latest
+    container_name: foto-produk-service
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongodb
+      - SPRING_DATA_MONGODB_DATABASE=ecommerce
+      - SPRING_DATA_MONGODB_USERNAME=adehendini
+      - SPRING_DATA_MONGODB_PASSWORD=password
+      - SPRING_DATA_MONGODB_PORT=27017
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server/eureka
+      - EUREKA_CLIENT_ENABLED=true
+      - SERVER_PORT=80
+      - S3_URL=http://localhost:9000
+      - S3_ACCESSKEY=minio
+      - S3_SECRETKEY=minio#123
+    restart: always
+    ports:
+      - 10003:80
+    networks:
+      - hendi_network
+
+networks:
+  hendi_network:
+    name: hendi_network
