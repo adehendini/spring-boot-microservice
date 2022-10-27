@@ -1,0 +1,39 @@
+version: '3.7'
+
+services:
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_vol:/data
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: adehendini
+      MONGO_INITDB_ROOT_PASSWORD: password
+      MONGO_INITDB_DATABASE: ecommerce
+    networks:
+      - simrs_network
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express
+    restart: always
+    ports:
+      - 10101:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: adehendini
+      ME_CONFIG_MONGODB_ADMINPASSWORD: password
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    networks:
+      - hendi_network
+       
+volumes:
+  mongodb_vol:
+    name: mongodb_vol
+
+networks:
+  hendi_network:
+    name: hendi_network
