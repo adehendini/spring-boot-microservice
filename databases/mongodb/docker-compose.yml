@@ -15,7 +15,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: password
       MONGO_INITDB_DATABASE: ecommerce
     networks:
-      - simrs_network
+      - hendi_network
 
   mongo-express:
     image: mongo-express
